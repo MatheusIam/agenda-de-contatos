@@ -1,17 +1,28 @@
 package com.matheus.agendatelefonica.entidades;
 
-public class Usuarios {
-//	private static final long serialVersionUID = 1L;
+import java.io.Serializable;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+public class Usuario implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nomeUsuario;
 	private String senha;
+	
+	@OneToMany
 	private Integer agendaID;
-	//private Contatos contatos;
 	
-	public Usuarios () {}
+	public Usuario () {}
 	
-	public Usuarios(Integer id, String nomeUsuario, String senha, Contatos contatos, Integer agendaID) {
+	public Usuario(Integer id, String nomeUsuario, String senha, Contato contatos, Integer agendaID) {
 		super();
 		this.id = id;
 		this.nomeUsuario = nomeUsuario;

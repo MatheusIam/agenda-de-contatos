@@ -2,7 +2,7 @@ package com.matheus.agendatelefonica.entidades;
 
 import java.util.Objects;
 
-public class Contatos { // entidade contato
+public class Contato { // entidade contato
 
 	private Integer id;
 	private String nome;
@@ -54,7 +54,7 @@ public class Contatos { // entidade contato
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Contatos other = (Contatos) obj;
+		Contato other = (Contato) obj;
 		return Objects.equals(telefone, other.telefone);
 	}
 }
