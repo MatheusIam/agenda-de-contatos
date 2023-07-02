@@ -1,13 +1,14 @@
 package com.matheus.agendatelefonica.entidades;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,7 +18,7 @@ public class Usuario implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id; // ex. 288
+	private Long id; // ex. 288
 	
 	@Column(name = "nome_usuarios")
 	private String nomeUsuario; // ex. fulano
@@ -25,22 +26,22 @@ public class Usuario implements Serializable{
 	@Column(name = "senha")
 	private String senha; // ex. senha123
 	
-	@OneToMany(mappedBy = "usuario")
-	private Set<Agenda> agendass; // ex. 32
+	@OneToOne(mappedBy = "") // vai retornar
+	private Set<Agenda> agendas; // ex. 32
 	
 	public Usuario () {}
 	
-	public Usuario(Integer id, String nomeUsuario, String senha, Set<Agenda> agendass) {
+	public Usuario(Long id, String nomeUsuario, String senha, Set<Agenda> agendas) {
 		super();
 		this.id = id;
 		this.nomeUsuario = nomeUsuario;
 		this.senha = senha;
-		this.agenda = agenda;
+		this.agendas = agendas;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNomeUsuario() {
@@ -56,8 +57,9 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 	}
 
-	public Set<Agenda> getAgenda() {
-		return agenda;
+	
+	public Set<Agenda> getAgendas() {
+		return agendas;
 	}
 
 	@Override
