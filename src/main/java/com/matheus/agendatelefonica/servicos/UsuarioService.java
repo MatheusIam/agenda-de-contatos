@@ -15,13 +15,13 @@ public class UsuarioService {
 	@Autowired
 	private Usuarios usuarios;
 	
-	// salvar
+	// salvar um usuário
 	public Usuario salvar (Usuario usuario) {
 		usuarios.save(usuario);
 		return usuario;
 	}
 	
-	// deletar
+	// deletar um usuário
 	public void deletar (Long id) {
 		try {
 			usuarios.deleteById(id);
@@ -30,7 +30,7 @@ public class UsuarioService {
 		}
 	}
 	
-	// atualizar
+	// atualizar um usuário
 	public Usuario atualizar (Long id, Usuario usuario) {
 		try {
 			Usuario entidade = usuarios.getReferenceById(id);
@@ -42,18 +42,18 @@ public class UsuarioService {
 		}
 	}
 	
-	// atualizar dados de uma entidade
+	// atualizar dados de um usuario
 	public void atualizarDados (Usuario entidade, Usuario obj) {
 		entidade.setNomeUsuario(obj.getNomeUsuario());
 		entidade.setSenha(obj.getSenha());
 	}
 	
-	// obter todos
+	// obter todos os usuarios
 	public List<Usuario> obterTodos (){
 		return usuarios.findAll();
 	}
 	
-	// obter por id
+	// obter usuarios por id
 	public Usuario obterPorId(Long id) {
 		Optional<Usuario> obj = usuarios.findById(id);
 		return obj.orElse(null); // retorna o usuario ou null se não achar nada

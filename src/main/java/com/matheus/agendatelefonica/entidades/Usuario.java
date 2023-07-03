@@ -26,17 +26,17 @@ public class Usuario implements Serializable{
 	@Column(name = "senha")
 	private String senha; // ex. senha123
 	
-	@OneToOne(mappedBy = "") // vai retornar
-	private Set<Agenda> agendas; // ex. 32
+	@OneToOne(mappedBy = "tb_agenda.id")
+	private Agenda agenda;
 	
 	public Usuario () {}
 	
-	public Usuario(Long id, String nomeUsuario, String senha, Set<Agenda> agendas) {
+	public Usuario(Long id, String nomeUsuario, String senha, Agenda agenda) {
 		super();
 		this.id = id;
 		this.nomeUsuario = nomeUsuario;
 		this.senha = senha;
-		this.agendas = agendas;
+		this.agenda = agenda;
 	}
 	public Long getId() {
 		return id;
@@ -58,8 +58,8 @@ public class Usuario implements Serializable{
 	}
 
 	
-	public Set<Agenda> getAgendas() {
-		return agendas;
+	public Agenda getAgenda() {
+		return agenda;
 	}
 
 	@Override
