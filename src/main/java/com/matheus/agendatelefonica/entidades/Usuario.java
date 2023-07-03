@@ -1,14 +1,12 @@
 package com.matheus.agendatelefonica.entidades;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,17 +24,17 @@ public class Usuario implements Serializable{
 	@Column(name = "senha")
 	private String senha; // ex. senha123
 	
-	@OneToOne(mappedBy = "tb_agenda.id")
-	private Agenda agenda;
+//	@OneToOne(mappedBy = "agenda")
+//	private Agenda agenda;
 	
 	public Usuario () {}
 	
-	public Usuario(Long id, String nomeUsuario, String senha, Agenda agenda) {
+	public Usuario(Long id, String nomeUsuario, String senha/*, Agenda agenda*/) {
 		super();
 		this.id = id;
 		this.nomeUsuario = nomeUsuario;
 		this.senha = senha;
-		this.agenda = agenda;
+		/*this.agenda = agenda;*/
 	}
 	public Long getId() {
 		return id;
@@ -58,9 +56,9 @@ public class Usuario implements Serializable{
 	}
 
 	
-	public Agenda getAgenda() {
+	/*public Agenda getAgenda() {
 		return agenda;
-	}
+	}*/
 
 	@Override
 	public String toString() {

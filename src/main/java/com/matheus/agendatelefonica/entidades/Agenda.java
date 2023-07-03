@@ -1,10 +1,14 @@
 package com.matheus.agendatelefonica.entidades;
 
+import java.util.List;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -16,20 +20,20 @@ public class Agenda {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	
+	@OneToOne
 	@Column(name = "usuario_id")
 	private Integer usuarioId;
 	
-	@Column(name = "contato_id")
-	private Integer contatoId;
+	
+	@OneToMany(mappedBy = "id.contatos")
+	private Set<Contato> contatos;
 	
 	public Agenda () {}
 
-	public Agenda(Integer id, Integer usuarioId, Integer contatoId) {
+	public Agenda(Integer id, Integer usuarioId) {
 		super();
 		this.id = id;
 		this.usuarioId = usuarioId;
-		this.contatoId = contatoId;
 	}
 
 	public Integer getUsuarioId() {
@@ -40,12 +44,8 @@ public class Agenda {
 		this.usuarioId = usuarioId;
 	}
 
-	public Integer getContatoId() {
-		return contatoId;
-	}
-
-	public void setContatoId(Integer contatoId) {
-		this.contatoId = contatoId;
+	public Set<Contato> getContato() {
+		return contatos;
 	}
 
 	public Integer getId() {
