@@ -53,10 +53,10 @@ public class UsuarioService {
 		return usuarios.findAll();
 	}
 	
-	// obter por nome
-	public Optional<Usuario> obterPorId(Long id) {
+	// obter por id
+	public Usuario obterPorId(Long id) {
 		Optional<Usuario> obj = usuarios.findById(id);
-		return obj;
+		return obj.orElse(null); // retorna o usuario ou null se não achar nada
 	}
 	
 }
